@@ -34,8 +34,9 @@ export const initDatabase = async () => {
 export async function newTodo (data: WriteTodoType){
     const db = await getDb()
 
+    const statement = await db.prepareAsync('INSERT INTO todos (content) VALUES ($content)')
     try {
-        const res = await db.runAsync('INSERT INTO todos (content) VALUES (?)', data.content)
+        const res = await statement.executeAsync({$content: data.content})
         return res
     } catch (error) {
         console.log(error)
