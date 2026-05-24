@@ -6,7 +6,7 @@ export function SearchInput({...rest}: SearchInputProps){
     const colors = useThemeColors()
 
     return <TextInput
-        placeholder="Recherche"
+        placeholder="Nouveau"
         placeholderTextColor={colors.muted}
         style={[
             style.input,
@@ -15,7 +15,24 @@ export function SearchInput({...rest}: SearchInputProps){
                 backgroundColor: colors.card,
                 color: colors.foreground,
                 borderRadius: 50
+            }
+        ]} 
+        {...rest}
+    />
+}
 
+export function AppInput({...rest}: SearchInputProps){
+    const colors = useThemeColors()
+
+    return <TextInput
+        placeholder="Nouveau"
+        placeholderTextColor={colors.muted}
+        style={[
+            style.input,
+            {
+                borderColor: colors.border,
+                backgroundColor: colors.card,
+                color: colors.foreground,
             }
         ]} 
         {...rest}

@@ -1,8 +1,8 @@
 import useThemeColors from "@/hooks/useThemeColors";
-import { StyleSheet, View, ViewProps } from "react-native";
+import { StyleSheet, View, ViewProps, ViewStyle } from "react-native";
 
-type cardProps = ViewProps
-export function Card({...rest}: cardProps){
+type cardProps = ViewProps & {style: ViewStyle}
+export function Card({style, ...rest}: cardProps){
     const colors = useThemeColors()
 
     return <View 
@@ -12,7 +12,8 @@ export function Card({...rest}: cardProps){
                 backgroundColor: colors.card,
                 borderColor: colors.border,
                 borderWidth: 1
-            }
+            },
+            style
         ]}
         {...rest}
     />

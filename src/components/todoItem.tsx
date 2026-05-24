@@ -1,8 +1,8 @@
-import { TodoItemTypes } from "@/constants/data";
 import useThemeColors from "@/hooks/useThemeColors";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import AppText from "./appText";
 import { AppButton } from "./ui/button";
+import { TodoItemTypes } from "@/types/todo";
 
 type todoItemProps = {
     todo: TodoItemTypes,
@@ -16,8 +16,22 @@ export function TodoItem({
     const colors = useThemeColors()
 
     const handleDelete = () => {
-        onDeleteTodo(todo.id)
+        return Alert.alert(
+            'Suppression', 
+            `Vous êtes sur le point de supprimer ${todo.id} todo.`,
+            [
+                {
+                    text: 'Annuler',
+                    style: 'cancel'
+                },
+                {
+                    text: 'Confirmer',
+                    onPress: () => onDeleteTodo(todo.id),
+                }
+            ]
+        )
     }
+    
     return <View
         style={[
             styles.card,
@@ -27,7 +41,8 @@ export function TodoItem({
                 borderWidth: 1,
                 flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
+                marginVertical: 8
             }
         ]}
     >
