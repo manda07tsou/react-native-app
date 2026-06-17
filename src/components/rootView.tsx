@@ -8,10 +8,12 @@ export function RootView({children, ...rest}: rootViewProps){
 
     return <View style={{
         backgroundColor: scheme.background,
-        flex: 1,
-        padding: 4
+        flex: 1
     }}>
-        <SafeAreaView>
+        <SafeAreaView style={{
+            padding: 10,
+            flex: 1
+        }}>
             {children}
         </SafeAreaView>
     </View>
