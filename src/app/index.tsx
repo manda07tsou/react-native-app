@@ -1,16 +1,17 @@
 import AppText from "@/components/appText";
-import { StyleSheet, View } from "react-native";
+import { RootView } from "@/components/rootView";
+import { StyleSheet } from "react-native";
 
 export default function Index() {
   return (
-    <View style={styles.container}>
+    <RootView>
       <AppText type="h1" color="primary">Text h1</AppText>
       <AppText type="h2">Text h2</AppText>
       <AppText type="h3">Text h3</AppText>
       <AppText type="h4">Text h4</AppText>
       <AppText type="p">Paragraphe</AppText>
       <AppText type="small">small</AppText>
-    </View>
+    </RootView>
   );
 }
 
