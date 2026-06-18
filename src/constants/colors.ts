@@ -6,7 +6,8 @@ export const themeColors = {
         card: "#1a1a2e",
         cardForeground: "#e2e2f5",
         primary: "#a48fff",
-        border: "#303052"
+        border: "#303052",
+        red: "#fb542b"
     },
 
     light: {
@@ -16,7 +17,8 @@ export const themeColors = {
         card: "#ffffff",
         cardForeground: "#2a2a4a",
         primary: "#6e56cf",
-        border: "#e0e0f0"
+        border: "#e0e0f0",
+        red: "#fb542b"
     }
 } as const
 

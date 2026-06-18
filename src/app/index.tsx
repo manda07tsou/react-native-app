@@ -1,29 +1,30 @@
+import { AppHeader } from "@/components/appHeader";
 import AppText from "@/components/appText";
-import { Card } from "@/components/card";
 import { RootView } from "@/components/rootView";
-import { StyleSheet, View } from "react-native";
+import { TodoItem } from "@/components/todoItem";
+import { TodosDatas } from "@/constants/data";
+import { useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 
-export default function Index() {
+export default function Index(){
+  const [todos, setTodos] = useState(TodosDatas)
+
+  const addTodo = (todo: string) => {
+    setTodos(state => [{id: Date.now(), content: todo}, ...state])
+  }
+
+  const removeTodo = () => {
+
+  }
   return (
     <RootView>
-      <View style={{gap: 10}}>
-        <Card>
-          <AppText type="h4">Titre de card</AppText>
-          <AppText color="muted">Paragraphe</AppText>
-          <AppText type="p">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem culpa modi, natus ad officia illo consectetur similique! Rem accusantium nulla temporibus nobis quas magni voluptatum qui, id, doloremque distinctio dolorum!</AppText>
-        </Card>
-        <Card>
-          <AppText type="h4">Titre de card</AppText>
-          <AppText color="muted">Paragraphe</AppText>
-          <AppText type="p">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem culpa modi, natus ad officia illo consectetur similique! Rem accusantium nulla temporibus nobis quas magni voluptatum qui, id, doloremque distinctio dolorum!</AppText>
-        </Card>
-        <Card>
-          <AppText type="h4">Titre de card</AppText>
-          <AppText color="muted">Paragraphe</AppText>
-          <AppText type="p">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem culpa modi, natus ad officia illo consectetur similique! Rem accusantium nulla temporibus nobis quas magni voluptatum qui, id, doloremque distinctio dolorum!</AppText>
-        </Card>
-
-      </View>
+      <AppHeader onNewTodo={addTodo}/>
+      <AppText color="muted" style={{marginBottom: 10}}>Mes taches</AppText>
+      <ScrollView >
+        <View style={{gap: 10}}>
+          {todos.map(item => ( <TodoItem todo={item}/>))}
+        </View>
+      </ScrollView>
     </RootView>
   );
 }

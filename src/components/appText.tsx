@@ -1,17 +1,19 @@
 import { ThemeColorTypes } from "@/constants/colors"
 import useThemeColors from "@/hooks/useThemeColors"
-import { StyleSheet, Text, TextProps } from "react-native"
+import { StyleSheet, Text, TextProps, TextStyle } from "react-native"
 
 type AppTextTypes = {
     type?: keyof typeof textStyles,
-    color?: ThemeColorTypes
+    color?: ThemeColorTypes,
+    style?: TextStyle
 } & TextProps
-export default function AppText({type = 'p', color ,...rest}: AppTextTypes){
+export default function AppText({style, type = 'p', color ,...rest}: AppTextTypes){
     const themeColors = useThemeColors()
     return <Text
         style={[
             textStyles[type],
-            {color: themeColors[color ?? 'foreground']}
+            {color: themeColors[color ?? 'foreground']},
+            style
         ]}
         {...rest}
     />
