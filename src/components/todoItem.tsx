@@ -5,13 +5,19 @@ import AppText from "./appText";
 import { AppButton } from "./ui/button";
 
 type todoItemProps = {
-    todo: TodoItemTypes
+    todo: TodoItemTypes,
+    onDeleteTodo: (todoId: number) => void
 }
 
 export function TodoItem({
-    todo
+    todo,
+    onDeleteTodo
 }: todoItemProps){
     const colors = useThemeColors()
+
+    const handleDelete = () => {
+        onDeleteTodo(todo.id)
+    }
     return <View
         style={[
             styles.card,
@@ -28,10 +34,11 @@ export function TodoItem({
         <View>
             <AppText type="small" color="muted">#{todo.id}</AppText>
             <AppText>{todo.content}</AppText>
-        </View>r
+        </View>
         <AppButton
             title="Del"
             colorType="red"
+            onPress={handleDelete}
         />
     </View>
 }
