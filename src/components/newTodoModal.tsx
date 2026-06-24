@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, View} from "react-native"
+import {View} from "react-native"
 import AppText from "./appText"
 import useThemeColors from "@/hooks/useThemeColors"
 import { AppModal } from "./ui/modal"

@@ -1,5 +1,4 @@
 import useThemeColors from "@/hooks/useThemeColors";
-import { useState } from "react";
 import { Button, StyleSheet, View, ViewProps } from "react-native";
 import AppText from "./appText";
 import { SearchInput } from "./ui/input";
