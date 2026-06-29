@@ -19,7 +19,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.vonintsoa.todolist"
+      "package": "com.vonintsoa.todolist",
+      "permissions": ["READ_CONTACTS"]
     },
     "web": {
       "output": "static",
@@ -37,7 +38,13 @@
           }
         }
       ],
-      "expo-sqlite"
+      "expo-sqlite",
+      [
+        "expo-contacts",
+        {
+          "contactsPermission" : "Allow $(PRODUCT_NAME) to access your contacts."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
