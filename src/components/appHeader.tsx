@@ -3,6 +3,8 @@ import { Button, StyleSheet, View, ViewProps } from "react-native";
 import AppText from "./appText";
 import { SearchInput } from "./ui/input";
 import { Card } from "./card";
+import { AppButton } from "./ui/button";
+import { useRouter } from "expo-router";
 
 type AppHeaderProps = {
   searchValue: string
@@ -11,7 +13,7 @@ type AppHeaderProps = {
 } & ViewProps
 export function AppHeader({ searchValue, onSearchChange, onSearchPress, ...rest }: AppHeaderProps){
     const colors = useThemeColors()
-  
+    const router = useRouter()
     return (
         <View 
             style={[
@@ -24,6 +26,7 @@ export function AppHeader({ searchValue, onSearchChange, onSearchPress, ...rest 
                 <AppText type="h3">MYTACHE</AppText>
                 <AppText color="muted">Bienvenue sur mon premier app mobile!</AppText>
             </View>
+            <AppButton title="Contact" onPress={() => router.navigate('/contact')}/>
             <Card style={{padding: 10, gap: 10}}>
                 <SearchInput
                     placeholder="Rechercher une tâche"
