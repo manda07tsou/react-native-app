@@ -54,6 +54,20 @@ export async function getAllTodos(){
     }
 }
 
+export async function searchTodos(query: string){
+    const db = await getDb()
+
+    try {
+        const res = await db.getAllAsync<TodoItemTypes>(
+            'SELECT * FROM todos WHERE content LIKE ?',
+            [`%${query}%`]
+        )
+        return res
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export async function deleteTodo(id: number){
     const db = await getDb()
 
